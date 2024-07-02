@@ -1,42 +1,44 @@
 # 괄호의 값
 
 
-PAIR = {
+PAR_TYPE_MATCHER = {
     ')': '(',
     ']': '[',
 }
-VALUE = {
+PAR_VALUE_MULTIPLIER = {
     ')': 2,
     ']': 3,
 }
 
 
 def solve(s: str) -> int:
-    stack = []
+    stack = [[None, 0]] # (괄호의 종류, 괄호열 내부 값의 가치)
+    try:
+        for c in s:
+            # 열리는 괄호면 스택에 넣고 넘김
+            if c in '([':
+                stack.append([c, 0])
+                continue
 
-    def calc_inner_value() -> int:
-        """(X) 혹은 [X]의 상황에서 X의 가치를 구함."""
-        inner_value = 0
-        while stack and isinstance(stack[-1], int):
-            inner_value += stack.pop()
-        return max(inner_value, 1)
+            # 닫히는 괄호면 괄호열의 가치를 계산한다.
+            assert len(stack) > 0
+            par_type, inner_value = stack.pop()
 
-    for c in s:
-        # 열리는 괄호면 스택에 넣고 넘김
-        if c in '([':
-            stack.append(c)
-            continue
-        # 닫히는 괄호면 괄호열의 가치를 계산한다.
-        inner_value = calc_inner_value()
-        # 괄호 쌍에서 괄호의 종류가 일치하는지 검사
-        if not stack or stack.pop() != PAIR[c]:
-            return 0
-        stack.append(VALUE[c]*inner_value)
-    value = calc_inner_value()
-    if stack:
-        # 아직 덜 닫힌 괄호들이 존재
+            # 괄호 쌍에서 괄호의 종류가 일치하는지 검사
+            assert par_type == PAR_TYPE_MATCHER[c]
+
+            # 부모 괄호열 내부 값의 가치에, 현재 괄호열의 가치를 더함
+            stack[-1][1] += max(inner_value, 1) * PAR_VALUE_MULTIPLIER[c]
+
+        assert len(stack) > 0
+        par_type, value = stack.pop()
+
+        # 모든 괄호열 쌍이 매칭되어 스택을 초기화 할 때 삽입했던 노드만 남아있어야 함.
+        assert par_type is None
+        return value
+
+    except AssertionError:
         return 0
-    return value
 
 
 if __name__ == "__main__":
