@@ -18,20 +18,19 @@
     <thead>
         <tr>
             <th>항목</th>
-            <th>지각 제출 시 벌금<br><small>(스터디 끝나기 전까지 제출 시 인정)</small></th>
-            <th>미제출 시 벌금</th>
+            <th>지각 제출 시<br><small>(스터디 끝나기 전까지 제출 시 인정)</small></th>
+            <th>미제출 시</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>해당 주차에 README.md에 찾아온 문제가 없을 시</td>
-            <td>1,000원</td>
-            <td>2,000원</td>
+            <td>해당 주차에 풀어온 문제가 push 되어있지 않을 시</td>
+            <td align="center">1,000원</td>
+            <td align="center">2,000원</td>
         </tr>
         <tr>
-            <td>해당 주차에 풀어온 문제가 push 되어있지 않을 시</td>
-            <td>1,000원</td>
-            <td>2,000원</td>
+            <td>해당 주차에 README.md에 찾아온 문제가 없을 시</td>
+            <td align="center" colspan="2">1,000원</td>
         </tr>
     </tbody>
 </table>
