@@ -212,3 +212,7 @@ git checkout -b <branch_name>
 ```shell
 git push origin <branch_name>
 ```
+
+## 기타
+
+* [여기 있는 누군가가 풀었는데 나는 못 푼 문제 모음](https://solved.ac/search?query=%28%40hepheir+%7C+%40ehdgurdusdn+%7C+%40megitang+%7C+%40dudwnsths1+%7C+%40kwon5436+%7C+%40ppo3330+%7C+%40hyoin0219%29+-+%40%24me)
