@@ -65,7 +65,7 @@ https://www.geeksforgeeks.org/list-cpp-stl/
 
 | 난이도 | 번호 | 제목 | 링크             |
 | ------ | ---- | ---- | ---------------- |
-| ![G4]  | 1106 | 호텔 | https://www.acmicpc.net/problem/1106 |
+| ![G4]  | 1106 | 호텔 | https://boj.kr/1106 |
 
 #### 양효인
 
