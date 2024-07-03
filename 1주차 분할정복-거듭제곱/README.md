@@ -47,7 +47,7 @@ https://www.geeksforgeeks.org/list-cpp-stl/
 
 | 난이도 | 번호 | 제목 | 링크             |
 | ------ | ---- | ---- | ---------------- |
-| ![??]  | -    | -    | https://boj.kr/- |
+| ![G4]  | 5639 | 이진 검색 트리   | https://boj.kr/5639 |
 
 #### 손영준
 
