@@ -53,7 +53,7 @@ https://www.geeksforgeeks.org/list-cpp-stl/
 
 | 난이도 | 번호 | 제목 | 링크             |
 | ------ | ---- | ---- | ---------------- |
-| ![??]  | -    | -    | https://boj.kr/- |
+| ![S2]  | 1535    | 안녕    | https://boj.kr/1535 |
 
 #### 권동균
 
