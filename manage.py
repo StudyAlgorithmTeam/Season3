@@ -4,8 +4,8 @@ from dataclasses import dataclass, field
 from enum import Enum
 from functools import cache
 from typing import List
+from yaml import load, FullLoader
 
-import frontmatter # pip install python-frontmatter
 import requests # pip install requests
 
 
@@ -121,11 +121,11 @@ if __name__ == '__main__':
     users = []
     activities = []
 
-    with open("README.md", "r") as f:
-        metadata = frontmatter.load(f).metadata
-        for name, problem_id_list in metadata['activities'].items():
+    with open("info.yml", "r") as f:
+        data = load(f, FullLoader)
+        for name, problem_id_list in data['activities'].items():
             activities.append(Activity(name, problem_id_list))
-        for handle in metadata['handles']:
+        for handle in data['handles']:
             users.append(User(handle))
 
     study = Study(users, activities)
