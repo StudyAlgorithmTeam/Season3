@@ -10,10 +10,4 @@ op3=ccw(x3,y3,x4,y4,x1,y1)
 op4=ccw(x3,y3,x4,y4,x2,y2)
 
 if op1*op2<0 and op3*op4<0: print(1)
-elif op1==0 or op2==0 or op3==0 or op4==0: print(1)
 else: print(0)
-
-# print(op1)
-# print(op2)
-# print(op3)
-# print(op4)
