@@ -1,7 +1,16 @@
 ---
 activities: # 이번 주에 풀어야 할 문제 번호
   1주차:
+    - 1629
+    - 11444
 handles: # 스터디 참여 인원 백준 아이디
+- hepheir
+- ehdgurdusdn
+- megitang
+- dudwnsths1
+- kwon5436
+- ppo3330
+- hyoin0219
 ---
 
 # Algorithm Study Season3
