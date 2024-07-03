@@ -71,7 +71,7 @@ https://www.geeksforgeeks.org/list-cpp-stl/
 
 | 난이도 | 번호 | 제목 | 링크             |
 | ------ | ---- | ---- | ---------------- |
-| ![??]  | -    | -    | https://boj.kr/- |
+| ![S3]  | 13171    | A    | https://www.acmicpc.net/problem/13171 |
 
 <!-- solved.ac 문제 난이도 별 태그 이미지 -->
 
