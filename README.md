@@ -1,6 +1,14 @@
+---
+activities: # 이번 주에 풀어야 할 문제 번호
+  1주차:
+handles: # 스터디 참여 인원 백준 아이디
+---
+
 # Algorithm Study Season3
 
 활동 시작일: 2024년 6월 27일 목요일
+
+<img src="streak.svg" height="240" />
 
 ## 진행 방식
 
