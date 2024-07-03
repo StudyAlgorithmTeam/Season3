@@ -213,6 +213,18 @@ git checkout -b <branch_name>
 git push origin <branch_name>
 ```
 
+#### `main` 브랜치에 변경이 생겼다고 공지가 올라올 경우
+
+아래의 명령어를 통해 `main` 브랜치의 변경사항을 자신의 브랜치에도 적용해주자.
+
+```
+# 내가 작업하는 브랜치에서 아래의 명령 실행
+
+git rebase origin/main --committer-date-is-author-date
+```
+
+* 이 과정에서 [merge conflict](https://docs.github.com/ko/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts)가 발생할 수 있는데, 이 경우 함께 모여서 해결하도록 하자.
+
 ## 기타
 
 * [여기 있는 누군가가 풀었는데 나는 못 푼 문제 모음](https://solved.ac/search?query=%28%40hepheir+%7C+%40ehdgurdusdn+%7C+%40megitang+%7C+%40dudwnsths1+%7C+%40kwon5436+%7C+%40ppo3330+%7C+%40hyoin0219%29+-+%40%24me)
