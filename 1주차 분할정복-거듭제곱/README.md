@@ -59,7 +59,7 @@ https://www.geeksforgeeks.org/list-cpp-stl/
 
 | 난이도 | 번호 | 제목 | 링크             |
 | ------ | ---- | ---- | ---------------- |
-| ![??]  | -    | -    | https://boj.kr/- |
+| ![S3]  | 1935 | 후위 표기식 2| https://boj.kr/1935 |
 
 #### 박준석
 
