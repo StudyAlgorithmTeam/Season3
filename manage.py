@@ -4,9 +4,10 @@ from dataclasses import dataclass, field
 from enum import Enum
 from functools import cache
 from typing import List
-from yaml import load, FullLoader
 
-import requests # pip install requests
+# external modules (pip install pyyaml requests)
+from yaml import load, FullLoader
+import requests
 
 
 
