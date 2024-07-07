@@ -6,10 +6,10 @@ import sys
 
 
 C, N = map(int, sys.stdin.readline().split())
-unit_price = [None] * N
-unit_amount = [None] * N
+group_cost = [None] * N
+group_size = [None] * N
 for i in range(N):
-    unit_price[i], unit_amount[i] = map(int, sys.stdin.readline().split())
+    group_cost[i], group_size[i] = map(int, sys.stdin.readline().split())
 
 
 @cache
@@ -19,18 +19,20 @@ def find_min_price(i = 0, c = C) -> int:
         # C명을 유치했으므로, 이제 더 비용을 안 소모해도 됨.
         return 0
 
-    min_price = sys.maxsize
-    max_n_units = math.ceil(c / unit_amount[i]) # 적어도 c명을 유치하기 위해 투자해야 하는 최소 횟수
+    min_cost = sys.maxsize
+    max_possible_groups = math.ceil(c / group_size[i]) # 적어도 c명을 유치하기 위해 투자해야 하는 최소 횟수
 
     if i == N-1:
         # i번째 도시가 마지막 도시이면 선택권이 없이 투자에 올인 해야한다.
-        return max_n_units * unit_price[i]
+        return max_possible_groups * group_cost[i]
 
-    for n_units in range(max_n_units+1):
-        price = find_min_price(i+1, c - n_units * unit_amount[i]) + n_units * unit_price[i]
-        if min_price > price:
-            min_price = price
-    return min_price
+    # 0 부터 max_possible_groups 번까지 투자해보면서 최소 비용을 찾는다.
+    for n_groups in range(max_possible_groups+1):
+        # i번째 도시에 n_groups 번 투자하는 경우:
+        cost = find_min_price(i+1, c - n_groups * group_size[i]) + n_groups * group_cost[i]
+        if min_cost > cost:
+            min_cost = cost
+    return min_cost
 
 
 print(find_min_price())
