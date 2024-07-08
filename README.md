@@ -1,3 +1,11 @@
+<!-- 문제 템플릿
+
+| 난이도 | 번호     | 제목 | 링크                      | 선정 이유 |
+| ------ | -------- | ---- | ------------------------- | --------- |
+| ![??]  | 문제번호 | -    | <https://boj.kr/문제번호> |           |
+
+-->
+
 # Algorithm Study Season3
 
 활동 시작일: 2024년 6월 27일 목요일
@@ -39,105 +47,42 @@
 
 ### 현재 벌칙 누적금
 
-<table>
-    <thead>
-        <tr>
-            <th>김동주</th>
-            <th>서동혁</th>
-            <th>정우현</th>
-            <th>손영준</th>
-            <th>총 합<small>(원)</small></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-    </tbody>
-</table>
+| 김동주 | 서동혁 | 정우현 | 손영준 | 총 합<small>(원)</small> |
+| ------ | ------ | ------ | ------ | ------------------------ |
+| 0      | 0      | 0      | 0      | 0                        |
 
 ## 활동 멤버
 
-<table>
-    <thead>
-        <tr>
-            <th>김동주</th>
-            <th>서동혁</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <a href="https://solved.ac/profile/hepheir">
-                    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=hepheir">
-                </a>
-            </td>
-            <td>
-                <a href="https://solved.ac/profile/ehdgurdusdn">
-                    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=ehdgurdusdn">
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+| 김동주                    | 서동혁                            |
+| ------------------------- | --------------------------------- |
+| [![b/hepheir]][s/hepheir] | [![b/ehdgurdusdn]][s/ehdgurdusdn] |
 
-<table>
-    <thead>
-        <tr>
-            <th>정우현</th>
-            <th>손영준</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <a href="https://solved.ac/profile/megitang">
-                    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=megitang">
-                </a>
-            </td>
-            <td>
-                <a href="https://solved.ac/profile/dudwnsths1">
-                    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=dudwnsths1">
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+[b/hepheir]: http://mazassumnida.wtf/api/v2/generate_badge?boj=hepheir
+[s/hepheir]: https://solved.ac/profile/hepheir
+[b/ehdgurdusdn]: http://mazassumnida.wtf/api/v2/generate_badge?boj=ehdgurdusdn
+[s/ehdgurdusdn]: https://solved.ac/profile/ehdgurdusdn
+
+| 정우현                      | 손영준                          |
+| --------------------------- | ------------------------------- |
+| [![b/megitang]][s/megitang] | [![b/dudwnsths1]][s/dudwnsths1] |
+
+[b/megitang]: http://mazassumnida.wtf/api/v2/generate_badge?boj=megitang
+[s/megitang]: https://solved.ac/profile/megitang
+[b/dudwnsths1]: http://mazassumnida.wtf/api/v2/generate_badge?boj=dudwnsths1
+[s/dudwnsths1]: https://solved.ac/profile/dudwnsths1
 
 ## 인턴
 
-<table>
-    <thead>
-        <tr>
-            <th>권동균</th>
-            <th>박준석</th>
-            <th>양효인</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <a href="https://solved.ac/profile/kwon5436">
-                    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=kwon5436">
-                </a>
-            </td>
-            <td>
-                <a href="https://solved.ac/profile/ppo3330">
-                    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=ppo3330">
-                </a>
-            </td>
-            <td>
-                <a href="https://solved.ac/profile/hyoin0219">
-                    <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=hyoin0219">
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+| 권동균                      | 박준석                    | 양효인                        |
+| --------------------------- | ------------------------- | ----------------------------- |
+| [![b/kwon5436]][s/kwon5436] | [![b/ppo3330]][s/ppo3330] | [![b/hyoin0219]][s/hyoin0219] |
+
+[b/kwon5436]: http://mazassumnida.wtf/api/v2/generate_badge?boj=kwon5436
+[s/kwon5436]: https://solved.ac/profile/kwon5436
+[b/ppo3330]: http://mazassumnida.wtf/api/v2/generate_badge?boj=ppo3330
+[s/ppo3330]: https://solved.ac/profile/ppo3330
+[b/hyoin0219]: http://mazassumnida.wtf/api/v2/generate_badge?boj=hyoin0219
+[s/hyoin0219]: https://solved.ac/profile/hyoin0219
 
 ---
 
@@ -166,9 +111,9 @@
 각 주차 별 README.md 파일을 살펴보면 아래와 같이 "찾아온 문제들" 섹션이 존재한다.
 자신의 이름을 찾아 아래와 같이 표를 채운다.
 
-* 난이도는 두 글자로 표현한다. (예: 골드 4의 경우 `G4`로 적으면 된다.)
-* 아래의 코드 스니펫에서 `-`로 시작하는 붉은 줄이 제거된 라인, `+`로 시작하는 초록색 줄이 추가된 라인이다.
-* 표의 열은 `|`(파이프 기호)를 기준으로 구분된다. 이때, 열의 너비를 반드시 맞춰줘야 할 필요는 없다.
+-   난이도는 두 글자로 표현한다. (예: 골드 4의 경우 `G4`로 적으면 된다.)
+-   아래의 코드 스니펫에서 `-`로 시작하는 붉은 줄이 제거된 라인, `+`로 시작하는 초록색 줄이 추가된 라인이다.
+-   표의 열은 `|`(파이프 기호)를 기준으로 구분된다. 이때, 열의 너비를 반드시 맞춰줘야 할 필요는 없다.
 
 ```diff
   ...
@@ -198,8 +143,8 @@
 자신이 작업할 브랜치를 생성하고 각자 과제를 수행한 뒤 푸쉬한다.
 푸시된 변경사항들은 스터디 시간 직전에 병합하는 것으로 한다.
 
-* 브랜치명은 자신이 누구인지만 구분되게끔 알잘딱하게 지으면 된다.
-* 실수로 `main` 브랜치를 수정하지 않도록 주의한다.
+-   브랜치명은 자신이 누구인지만 구분되게끔 알잘딱하게 지으면 된다.
+-   실수로 `main` 브랜치를 수정하지 않도록 주의한다.
 
 #### 브랜치 생성 방법
 
@@ -223,8 +168,10 @@ git push origin <branch_name>
 git rebase origin/main --committer-date-is-author-date
 ```
 
-* 이 과정에서 [merge conflict](https://docs.github.com/ko/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts)가 발생할 수 있는데, 이 경우 함께 모여서 해결하도록 하자.
+-   이 과정에서 [merge conflict](https://docs.github.com/ko/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts)가 발생할 수 있는데, 이 경우 함께 모여서 해결하도록 하자.
 
 ## 기타
 
-* [여기 있는 누군가가 풀었는데 나는 못 푼 문제 모음](https://solved.ac/search?query=%28%40hepheir+%7C+%40ehdgurdusdn+%7C+%40megitang+%7C+%40dudwnsths1+%7C+%40kwon5436+%7C+%40ppo3330+%7C+%40hyoin0219%29+-+%40%24me)
+-   [여기 있는 누군가가 풀었는데 나는 못 푼 문제 모음](https://solved.ac/search?query=%28%40hepheir+%7C+%40ehdgurdusdn+%7C+%40megitang+%7C+%40dudwnsths1+%7C+%40kwon5436+%7C+%40ppo3330+%7C+%40hyoin0219%29+-+%40%24me)
+
+-   [마크다운 사용법 - 참고 링크](https://gist.github.com/ihoneymon/652be052a0727ad59601)
