@@ -1,0 +1,1 @@
+b,c,*a=map(int,input().split());print(b/2+(b*b/4+c)**.5)
