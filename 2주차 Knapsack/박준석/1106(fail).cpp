@@ -13,7 +13,8 @@ int Min;
 int knap() {
 	for (int i = 1; i <= 1000; i++) { //dp를 C까지 돌면서 채움
 		for (int j = 0; j < N; j++) { //N개의 도시들중 최적
-			if ((i - cust[j]) < 0);//뭐지
+			if ((i - cust[j]) < 0)
+				dp[i] = min(dp[i], 0 + cost[j]);
 			else
 				dp[i] = min(dp[i], dp[i - cust[j]] + cost[j]);
 		}
