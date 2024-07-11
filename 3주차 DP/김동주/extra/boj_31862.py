@@ -1,103 +1,89 @@
 # 승리하라
 
+import collections
 import sys
 
 
-MAX_N = int(2e5)
+class RangeMaxTree:
+    def __init__(self, n: int, not_counted=[]):
+        self.n = n
+        self.tree = [0] * (4*n)
+        self.not_counted = not_counted
 
-N, M, K = map(int, sys.stdin.readline().split())
+    def top(self) -> int:
+        return self.tree[1]
 
+    def get(self, i: int) -> int:
+        return self.tree[self._index(i)]
 
-# 각 팀별 확정된 점수와, 아직 진행되지 않은 게임 파악
-scores = [0] * (N+1)
-unmatched = []
-for team in range(M):
-    t1, t2, r = map(int, sys.stdin.readline().split())
-    match r:
-        case 0:
-            unmatched.append((t1, t2))
-        case 1:
-            scores[t1] += 1
-        case 2:
-            scores[t2] += 1
+    def query(self, lo: int, hi: int) -> int:
+        return self._query(1, 0, self.n-1, lo, hi)
 
+    def _query(self, node: int, start: int, end: int, lo: int, hi: int) -> int:
+        if hi < start or end < lo:
+            return 0
+        if lo <= start and end <= hi:
+            return self.tree[node]
+        mid = (start+end)//2
+        return max(
+            self._query(node*2, start, mid, lo, hi),
+            self._query(node*2+1, mid+1, end, lo, hi),
+        )
 
-# U = 아직 진행되지 않은 게임의 개수
-# U는 최대 20. (문제에 명시) -> O(2^U)에 완전탐색이 가능
-U = len(unmatched)
+    def update(self, i: int, value: int):
+        node = self._index(i)
+        self.tree[node] = value
+        if i in self.not_counted: # 개조된 구간 트리이다.
+            return
+        while (node := node//2):
+            self.tree[node] = max(self.tree[node*2], self.tree[node*2+1])
 
-
-# 구간 최댓값 트리를 이용해 최댓값을 log N에 갱신하고 조회하기
-st = [0] * (4*MAX_N)
-
-
-def st_index_of(team: int) -> int:
-    """team의 인덱스를 구간 최댓값 트리에서 찾는다."""
-    s, e = 0, MAX_N
-    node = 1
-    while s < e:
-        m = (s+e)//2
-        if m < team:
-            node = node*2+1
-            s = m+1
-        else:
-            node = node*2
-            e = m
-    return node
-
-
-def st_update(team: int):
-    """team의 점수가 갱신되었을 때, 구간 최댓값 트리를 갱신한다."""
-    node = st_index_of(team)
-    while (node := node//2) > 0:
-        l, r = st[node*2], st[node*2+1]
-        st[node] = l if scores[l] > scores[r] else r
+    def _index(self, i: int) -> int:
+        s, e = 0, self.n-1
+        node = 1
+        while s < e:
+            mid = (s+e)//2
+            if i <= mid:
+                e = mid
+                node *= 2
+            else:
+                s = mid+1
+                node = node*2+1
+        return node
 
 
-# 구간 트리 초기화
-st_offset = st_index_of(0)
-for team in range(1, N+1):
-    st[st_offset+team] = team
-    st_update(team)
+if __name__ == "__main__":
+    MAX_N = int(2e5)
+    N, M, K = map(int, sys.stdin.readline().split())
 
+    # 이 구간 트리는 K번 팀을 제외한 팀들의 점수중 최댓값을 저장한다.
+    tree = RangeMaxTree(MAX_N+1, not_counted=[K])
 
-def st_first_max() -> int:
-    """최댓값을 가지고 있는 팀을 반환한다."""
-    return st[1]
+    game_counter = collections.Counter()
 
+    for i in range(M):
+        t1, t2, r = map(int, sys.stdin.readline().split())
+        if r == 1:
+            tree.update(t1, tree.get(t1)+1)
+            continue
+        if r == 2:
+            tree.update(t2, tree.get(t2)+1)
+            continue
+        game_counter[(t1, t2)] += 1
+    games = [(t1, t2, game_counter[(t1, t2)]) for t1, t2 in game_counter]
 
-def st_second_max() -> int:
-    """두 번째로 큰 값을 가지고 있는 팀을 반환한다."""
-    pri = st[1]
-    pri_score = scores[pri]
-    scores[pri] = -1
-    st_update(pri)
-    sec = st[1]
-    scores[pri] = pri_score
-    st_update(pri)
-    return sec
+    def bruteforce(i: int) -> int:
+        if i == 0:
+            # 2등 보다는 점수가 커야 유일한 1등이다.
+            return 1 if tree.get(K) > tree.top() else 0
+        cases = 0
+        t1, t2, count = games[i-1]
+        for c in range(count+1):
+            tree.update(t1, tree.get(t1)+c)
+            tree.update(t2, tree.get(t2)+count-c)
+            cases += bruteforce(i-1)
+            tree.update(t1, tree.get(t1)-c)
+            tree.update(t2, tree.get(t2)-count+c)
+        return cases
 
-
-def is_winner(team: int) -> bool:
-    """team이 최댓값을 가지고 있는 유일한 팀인지 확인한다. (O(log N))"""
-    if team != st_first_max():
-        return False
-    if scores[team] == scores[st_second_max()]:
-        return False
-    return True
-
-
-def backtracking(i: int) -> int:
-    if i == U:
-        return 1 if is_winner(K) else 0
-    cases = 0
-    for t in unmatched[i]:
-        scores[t] += 1
-        st_update(t)
-        cases += backtracking(i+1)
-        scores[t] -= 1
-        st_update(t)
-    return cases
-
-
-print(backtracking(0))
+    print(bruteforce(len(games)))
