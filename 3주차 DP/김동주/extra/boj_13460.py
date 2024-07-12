@@ -23,7 +23,7 @@ for y in range(N):
 
 
 def move_red(rx, ry, bx, by, dx, dy):
-    while not IS_WALL[rx+dx][ry+dy] and (rx+dx, ry+dy) != (bx, by) and (rx, ry) != O:
+    while not IS_WALL[rx+dx][ry+dy] and ((rx+dx, ry+dy) != (bx, by) or (rx+dx, ry+dy) == O) and (rx, ry) != O:
         rx += dx
         ry += dy
     return rx, ry
