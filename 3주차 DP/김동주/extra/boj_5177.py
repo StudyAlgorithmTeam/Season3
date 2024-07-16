@@ -4,26 +4,24 @@ import sys
 import re
 
 
+TOKENS = re.compile(r'(\(|\)|\{|\}|\[|\]|\,|\;|\:|\.)')
 WHITESPACES = re.compile(r'\s+')
-
 PARENTHESIS_OPENER = re.compile(r'\(|\{|\[')
 PARENTHESIS_CLOSER = re.compile(r'\)|\}|\]')
 
 
 def compress(s: str) -> str:
-    # 대소문자 구분하지 않음 -> 소문자로 통일
+    # 대소문자 구분하지 않음
     s = s.lower()
-    # 괄호끼리는 종류를 구분하지 않음 -> 소괄호로 통일
-    s = PARENTHESIS_OPENER.sub(' ( ', s)
-    s = PARENTHESIS_CLOSER.sub(' ) ', s)
-    # 세미콜론과 컴마는 구분하지 않음 -> 컴마로 통일
-    s = s.replace(',', ' , ')
-    s = s.replace(';', ' , ')
-    # 특수 문자의 바로 앞이나 바로 뒤에 나오는 공백도 있으나 없어도 된다 -> 있는 것으로 통일
-    s = s.replace('.', ' . ')
-    s = s.replace(':', ' : ')
-    # 공백이 하나 이상이라면 공백의 크기는 관계 없다. -> 하나의 공백만 남기고 제거
+    # 각 토큰의 앞 뒤로 공백을 추가
+    s = TOKENS.sub(r' \1 ', s)
+    # 중복된 공백을 하나로 통일
     s = WHITESPACES.sub(' ', s)
+    # 괄호의 종류를 구분하지 않음 -> 소괄호로 통일
+    s = PARENTHESIS_OPENER.sub('(', s)
+    s = PARENTHESIS_CLOSER.sub(')', s)
+    # 세미콜론과 컴마는 구분하지 않음 -> 컴마로 통일
+    s = s.replace(';', ',')
     return s
 
 
