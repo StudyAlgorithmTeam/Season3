@@ -54,10 +54,10 @@ def solve() -> int:
                     continue
 
                 if (nrx, nry) == O:
-                    return tries+1
+                    return 1
 
                 q.append((nrx, nry, nbx, nby))
-    return -1
+    return 0
 
 
 if __name__ == "__main__":
