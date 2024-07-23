@@ -24,7 +24,7 @@ int main() {
 		q.push(nums[i]);
 		dupliNums[nums[i]]++;
 
-		if (dupliNums[nums[i]] >= k) {
+		while (dupliNums[nums[i]] >= k) {
 			int temp = q.front();
 			q.pop();
 			dupliNums[temp]--;
