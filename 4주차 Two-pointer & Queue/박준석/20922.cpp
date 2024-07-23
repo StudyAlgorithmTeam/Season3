@@ -12,17 +12,21 @@ int main() {
 	int N, K;
 	cin >> N >> K;
 
+	// O(N)
 	for (int i = 0; i < N; i++) {
 		cin >> arr[i];
 	}
 
+	// O(1)
 	int pt1 = 0, pt2 = 0;
 	int count[100001] = { 0, };
 	int maxlen = 0;
 	int len = 1;
 
 	count[arr[pt2]] = 1;
+
 	while (pt2 < N-1) {
+		// O(1)
 		if (count[arr[pt2 + 1]] < K) {
 			pt2++;
 			count[arr[pt2]]++;
