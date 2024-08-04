@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from io import TextIOWrapper
 from pathlib import Path
 from random import randint
@@ -14,20 +16,36 @@ N_TRIES = 1000
 def files_to_compare(repository_dir: Path) -> List[Path]:
     # 다음 파일들의 출력을 비교한다.
     return [
-        repository_dir / '2주차 Knapsack' / '김동주' / 'boj_1535.py',
-        repository_dir / '2주차 Knapsack' / '서동혁' / 'boj_1535.py',
+        repository_dir / '6주차/김동주/boj_2573.py',
+        repository_dir / '6주차/김동주/boj_2573.ans.py',
     ]
+
+
+def save_input_at(repository_dir: Path) -> Path:
+    return repository_dir / '반례.txt'
 
 
 def generate_random_testcase(stdin: TextIOWrapper):
     # 임의의 테스트케이스를 stdin에 작성한다.
-    N = randint(1, 20)
-    L = [randint(0, 100) for i in range(N)]
-    J = [randint(0, 100) for i in range(N)]
-
-    stdin.write(f"{N}\n")
-    stdin.write(f"{' '.join(map(str, L))}\n")
-    stdin.write(f"{' '.join(map(str, J))}")
+    N = 5
+    M = 5
+    GRID = [[0] * M for _ in range(N)]
+    from collections import deque
+    queue = deque()
+    queue.append((randint(1, N-2), randint(1, M-2)))
+    while queue:
+        y, x = queue.popleft()
+        if 1 <= y < N-1 and 1 <= x < M-1 and GRID[y][x] == 0:
+            if randint(0, 100) == 0:
+                continue
+            GRID[y][x] = randint(1, 10)
+            queue.append((y+1, x))
+            queue.append((y-1, x))
+            queue.append((y, x+1))
+            queue.append((y, x-1))
+    stdin.write(f"{N} {M}\n")
+    for y in range(N):
+        stdin.write(f"{' '.join(map(str, GRID[y]))}\n")
 
 
 ###############################################################
@@ -55,6 +73,12 @@ def main():
         generate_random_testcase(stdin)
 
         if compare_outputs(stdin, *files) == False:
+            stdin.seek(0)
+            save_at = save_input_at(REPOSITORY_DIR).resolve()
+            with open(save_at, 'w') as f:
+                f.write(stdin.read())
+            print(f"반례를 \"{save_at.relative_to(REPOSITORY_DIR)}\"에 저장했습니다.")
+            print(f"================================================================")
             break
 
 
