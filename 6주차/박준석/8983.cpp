@@ -3,7 +3,7 @@
 #include <vector>
 #include<algorithm>
 #include<cmath>
-#define INT int
+#define INT int 
 
 using namespace std;
 
