@@ -15,6 +15,7 @@ int main() {
 	dp[1][1] = 1;
 	dp[1][2] = 1;
 
+	// O(n)
 	for (int idx = 2; idx <= n; idx++) {
 		dp[idx][0] = (dp[idx - 1][1] + dp[idx - 1][2]) % mod;
 		dp[idx][1] = (dp[idx - 1][0] + dp[idx - 1][2]) % mod;
