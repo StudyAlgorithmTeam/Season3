@@ -1,0 +1,115 @@
+#include <iostream>
+#include <algorithm>
+#include<string>
+#include<stdio.h>
+
+using namespace std;
+
+string change(string s) {
+	string res = s;
+
+	int spaceStart = -1;
+	int spaceEnd = -1;
+	for (int i = 0; i < res.size(); i++) {
+		if (spaceStart == -1) {
+			if ((res[i] >= 'A') && (res[i] <= 'Z')) {
+				res[i] += 32;
+			}
+			else if ((res[i] == '[') || (res[i] == '{')) {
+				res[i] = '(';
+			}
+			else if ((res[i] == ']') || (res[i] == '}')) {
+				res[i] = ')';
+			}
+			else if (res[i] == ';') {
+				res[i] = ',';
+			}
+			else if (res[i] == ' ') {
+				spaceStart = i;
+			}
+		}
+		else {
+			if (res[i] != ' ') {
+				spaceEnd = i - 1;
+				if (spaceStart != spaceEnd) {
+					int Sub = spaceEnd - spaceStart;
+					while (Sub--) {
+						res.erase(res.begin() + spaceStart);
+						i--;
+					};
+				}
+				i--;
+				spaceStart = -1;
+				spaceEnd = -1;
+			}
+		}
+	}
+
+	for (int i = 0; i < res.size(); i++) {
+		if (res[i] == ' ') {
+			res.erase(res.begin() + i);
+			i--;
+		}
+		else {
+			break;
+		}
+	}
+	for (int i = (res.size() - 1); i >= 0; i--) {
+		if (res[i] == ' ') {
+			res.pop_back();
+		}
+		else {
+			break;
+		}
+	}
+
+	for (int i = 0; i < res.size(); i++) {
+		if ((res[i] == '(') || (res[i] == ')') || (res[i] == '[') || (res[i] == ']') || (res[i] == '{') ||
+			(res[i] == '}') || (res[i] == '.') || (res[i] == ',') || (res[i] == ';') || (res[i] == ':')) {
+			if ((i > 0) && (res[i - 1] == ' ')) {
+				res.erase(res.begin() + (i - 1));
+				i--;
+			}
+			if ((i < (res.size() - 1)) && (res[i + 1] == ' ')) {
+				res.erase(res.begin() + (i + 1));
+			}
+		}
+	}
+	return res;
+
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int K;
+	string s1, s2;
+	cin >> K;
+	cin.ignore();
+
+	for(int i=1;i<=K;i++){
+		getline(cin, s1);
+		getline(cin, s2);
+	
+		s1 = change(s1);
+		s2 = change(s2);
+
+		if (s1==s2) {
+			cout << "Data Set " << i << ": equal\n";
+			cout << "\n";
+		}
+		else {
+			cout << "Data Set " << i << ": not equal\n";
+			cout << "\n";
+		}
+	}
+
+}
+//많은 실패로 블로그 참조함. 예제는 풀리고 과정도 맞는것 같은데 16퍼에서 계속된 실패
+//시도 과정속에서 erase나 getline ignore등에 관하여 알게됨.
+//블로그 내용에서 여러개의 공백이 있을 때 하나로 줄이는 내용이 어려웠음. 원래 풀이에서 아마 이 부분이 잘못됐을것으로 생각됨.
+//공백이 어디부터 있는지 그리고 어디까지 있는지 체크 한 후에 하나 남을때까지 지워버리는 방식
+//나머지 부분은 구현가능 하던 부분들
+//자고 일어나서 내 코드 한번 더 건드려볼거임
