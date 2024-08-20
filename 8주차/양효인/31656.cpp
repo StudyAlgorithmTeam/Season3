@@ -52,11 +52,12 @@ int main() {
 
 	int diff = days(jong[0], jong[1], jong[2]) - days(yeong[0], yeong[1], yeong[2]);
 
-	// O(N)
+	// O(N*T)
 	while(n--) {
 		int op, c, k;
 		cin >> op >> c >> k;
 		if (op == 3) k *= 30;
+		// O(T)
 		for (int i = t; i >= c; i--) {
 			dp[i] = max(dp[i], dp[i - c] + k);
 		}
